@@ -204,10 +204,12 @@ def repliceSubArea3(areaName, value):
         newline = line
         if (current > start and current < end):
             if (line.find(areaName) >= 0):
+                # print('before-------->',newline)
                 strP = line.split()
                 for i in range(3):
                     newline = newline.replace(strP[i + 1], str(value[i]), 1)
                     # newline = re.sub(strP[i + 1], str(value[i]), newline)
+                # print('after--------->', newline)
         content = content + newline + '\n'
         current += 1
     inpfile = content
