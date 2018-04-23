@@ -219,6 +219,10 @@ def changeSubArea8(areaName, value):
     repliceSubArea5(areaName, value[:5])
     repliceSubArea3(areaName, value[5:])
 
+def repliceAreas(reg,value):
+    for i in range(len(value)):
+        areaName=reg+str(i+1)
+        changeSubArea8(areaName,value[i])
 
 def repliceMannin(pipName, value):
     global inpfile
