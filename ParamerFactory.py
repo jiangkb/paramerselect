@@ -1,6 +1,7 @@
 #!/usr/bin/python3.6
 # -*- coding: utf-8 -*-
 import numpy as np
+import ParamerManager as pm
 import random
 
 subAreaParaRange = [[0.005, 0.05], [0.005, 0.5], [0.2, 10], [2, 10], [5, 85], [25, 80], [0, 10], [2, 7]]
@@ -25,5 +26,7 @@ def pipParamer(maxN):
 
 
 if __name__ == "__main__":
-    print(subAreaParamer())
+    value=subAreaParamer()
+    pm.changeSubArea8('S1', value)
+    print(value)
     print(pipParamer(4))
