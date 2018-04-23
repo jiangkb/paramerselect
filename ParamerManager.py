@@ -251,7 +251,7 @@ def repliceGeom(pipName, value):
                 # print(newline.index('1.0'),len(newline))
                 # print('before---------', strP[2], strP[3])
                 newline = newline.replace(strP[2], str(value[index - 1][0]), 1)
-                newline = newline.replace(strP[2], str(value[index - 1][1]), 1)
+                newline = newline.replace(strP[3], str(value[index - 1][1]), 1)
                 # newline = re.sub(strP[2], str(value[index-1][0]), newline)
                 # newline = re.sub(strP[3], str(value[index - 1][1]), newline)
                 strP = newline.split()
