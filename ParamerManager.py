@@ -270,7 +270,7 @@ def repliceGeom(pipName, value):
     inpfile = content
 
 
-def getMaxGeom(pipName,lens):
+def getMaxGeom(pipName, lens):
     maxArr = range(lens)
     global inpfile
     start, end = getTableByName(inpfile, 'XSECTIONS', 'TIMESERIES')
@@ -280,9 +280,26 @@ def getMaxGeom(pipName,lens):
             strP = line.split()
             if (len(strP) > 0 and strP[0][:1] == pipName):
                 index = int(strP[0][1:])
-                maxArr[index]=float(strP[2])
+                maxArr[index] = float(strP[2])
         current += 1
     return maxArr
+
+
+def repliceAll(areaRex, areaNum, pipRex, pipNum, value):
+    # 替换所有area参数
+    for i in range(areaNum):
+        areaName = areaRex + str(i + 1)
+        changeSubArea8(areaName, value[:8])
+    # 替换管道参数
+    manning = value[8]
+    geom = value[9]
+    manningArr = []
+    geomArr = []
+    for i in range(pipNum):
+        manningArr.append(manning)
+        geomArr.append(geom)
+    repliceMannin(pipRex, manningArr)
+    repliceGeom(pipRex, geomArr)
 
 
 def getResult3(nodeName):
