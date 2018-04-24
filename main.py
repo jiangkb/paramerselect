@@ -22,9 +22,10 @@ def modifysubArea(areas=7):
     return subareas
 
 def modifyPip(pips=11):
+    maxArr=pm.getMaxGeom('C',pips)
     pip11 = []
-    for i in range(pips):
-        pip11.append(pf.pipParamer(1))
+    for i in maxArr:
+        pip11.append(pf.pipParamer(i))
     pm.repliceGeom('C', pip11)
     return pip11
 

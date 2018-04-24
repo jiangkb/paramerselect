@@ -209,7 +209,7 @@ def repliceSubArea3(areaName, value):
                 for i in range(3):
                     newline = newline.replace(strP[i + 1], str(value[i]), 1)
                     # newline = re.sub(strP[i + 1], str(value[i]), newline)
-                # print('after--------->', newline)
+                    # print('after--------->', newline)
         content = content + newline + '\n'
         current += 1
     inpfile = content
@@ -219,10 +219,12 @@ def changeSubArea8(areaName, value):
     repliceSubArea5(areaName, value[:5])
     repliceSubArea3(areaName, value[5:])
 
-def repliceAreas(reg,value):
+
+def repliceAreas(reg, value):
     for i in range(len(value)):
-        areaName=reg+str(i+1)
-        changeSubArea8(areaName,value[i])
+        areaName = reg + str(i + 1)
+        changeSubArea8(areaName, value[i])
+
 
 def repliceMannin(pipName, value):
     global inpfile
@@ -256,16 +258,31 @@ def repliceGeom(pipName, value):
                 index = int(strP[0][1:])
                 # print(newline.index('1.0'),len(newline))
                 # print('before---------', strP[2], strP[3])
-                newline = newline.replace(strP[2], str(value[index - 1][0]), 1)
-                newline = newline.replace(strP[3], str(value[index - 1][1]), 1)
+                # newline = newline.replace(strP[2], str(value[index - 1][0]), 1)
+                newline = newline.replace(strP[3], str(value[index - 1]), 1)
                 # newline = re.sub(strP[2], str(value[index-1][0]), newline)
                 # newline = re.sub(strP[3], str(value[index - 1][1]), newline)
                 strP = newline.split()
                 # print('after---------', strP[2], strP[3])
-                index += 1
+                # index += 1
         content = content + newline + '\n'
         current += 1
     inpfile = content
+
+
+def getMaxGeom(pipName,lens):
+    maxArr = range(lens)
+    global inpfile
+    start, end = getTableByName(inpfile, 'XSECTIONS', 'TIMESERIES')
+    current = 0
+    for line in inpfile.splitlines():
+        if (current > start and current < end):
+            strP = line.split()
+            if (len(strP) > 0 and strP[0][:1] == pipName):
+                index = int(strP[0][1:])
+                maxArr[index]=float(strP[2])
+        current += 1
+    return maxArr
 
 
 def getResult3(nodeName):
