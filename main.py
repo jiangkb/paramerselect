@@ -34,7 +34,6 @@ def runModel(path='example2\\Example.inp'):
 
 
 def computeDelta(pointName,avg,mas):
-    delta=0;
     avgSW,maxSW,maxTSW=pm.getResult3(pointName)
     delta=abs(avg-avgSW)+abs(mas-maxSW)
     return delta
