@@ -65,24 +65,24 @@ S7               RainGage         J10              2.33     0.0      907      3.
 [SUBAREAS]
 ;;Subcatchment   N-Imperv   N-Perv     S-Imperv   S-Perv     PctZero    RouteTo    PctRouted 
 ;;-------------- ---------- ---------- ---------- ---------- ---------- ---------- ----------
-S1               0.01      0.29       6.89       6.15        64.97         OUTLET
-S2               0.01      0.29       6.89       6.15        64.97         OUTLET
-S3               0.01      0.29       6.89       6.15        64.97         OUTLET
-S4               0.01      0.29       6.89       6.15        64.97         OUTLET
-S5               0.01      0.29       6.89       6.15        64.97         OUTLET
-S6               0.01      0.29       6.89       6.15        64.97         OUTLET
-S7               0.01      0.29       6.89       6.15        64.97         OUTLET
+S1               0.03      0.47       0.67       9.83        69.13         OUTLET
+S2               0.03      0.47       0.67       9.83        69.13         OUTLET
+S3               0.03      0.47       0.67       9.83        69.13         OUTLET
+S4               0.03      0.47       0.67       9.83        69.13         OUTLET
+S5               0.03      0.47       0.67       9.83        69.13         OUTLET
+S6               0.03      0.47       0.67       9.83        69.13         OUTLET
+S7               0.03      0.47       0.67       9.83        69.13         OUTLET
 
 [INFILTRATION]
 ;;Subcatchment   MaxRate    MinRate    Decay      DryTime    MaxInfil
 ;;-------------- ---------- ---------- ---------- ---------- ----------
-S1               44.5        0.13        6.01        7          0
-S2               44.5        0.13        6.01        7          0
-S3               44.5        0.13        6.01        7          0
-S4               44.5        0.13        6.01        7          0
-S5               44.5        0.13        6.01        7          0
-S6               44.5        0.13        6.01        7          0
-S7               44.5        0.13        6.01        7          0
+S1               72.46        4.09        4.61        7          0
+S2               72.46        4.09        4.61        7          0
+S3               72.46        4.09        4.61        7          0
+S4               72.46        4.09        4.61        7          0
+S5               72.46        4.09        4.61        7          0
+S6               72.46        4.09        4.61        7          0
+S7               72.46        4.09        4.61        7          0
 
 [JUNCTIONS]
 ;;Name           Elevation  MaxDepth   InitDepth  SurDepth   Aponded
@@ -107,32 +107,32 @@ O1               4966       FREE                        NO
 [CONDUITS]
 ;;Name           From Node        To Node          Length     Roughness  InOffset   OutOffset  InitFlow   MaxFlow
 ;;-------------- ---------------- ---------------- ---------- ---------- ---------- ---------- ---------- ----------
-C1               J1               J5               185.00     0.014      *          *          0          0
-C10              J10              J11              145.00     0.014      *          *          0          0
-C11              J11              O1               89.00      0.014      *          *          0          0
-C2               J2               J11              526.00     0.014      *          *          0          0
-C3               J3               J4               109.00     0.014      *          *          0          0
-C4               J4               J5               133.00     0.014      *          4970.000   0          0
-C5               J5               J6               207.00     0.014      4970.000   *          0          0
-C6               J7               J6               140.00     0.014      *          *          0          0
-C7               J6               J8               95.00      0.014      *          *          0          0
-C8               J8               J9               166.00     0.014      *          *          0          0
-C9               J9               J10              320.00     0.014      *          *          0          0
+C1               J1               J5               185.00     0.013      *          *          0          0
+C10              J10              J11              145.00     0.013      *          *          0          0
+C11              J11              O1               89.00      0.013      *          *          0          0
+C2               J2               J11              526.00     0.013      *          *          0          0
+C3               J3               J4               109.00     0.013      *          *          0          0
+C4               J4               J5               133.00     0.013      *          4970.000   0          0
+C5               J5               J6               207.00     0.013      4970.000   *          0          0
+C6               J7               J6               140.00     0.013      *          *          0          0
+C7               J6               J8               95.00      0.013      *          *          0          0
+C8               J8               J9               166.00     0.013      *          *          0          0
+C9               J9               J10              320.00     0.013      *          *          0          0
 
 [XSECTIONS]
 ;;Link           Shape        Geom1            Geom2      Geom3      Geom4      Barrels    Culvert
 ;;-------------- ------------ ---------------- ---------- ---------- ---------- ---------- ----------
-C1               FILLED_CIRCULAR 1              0.00417     0          0          1
-C10              FILLED_CIRCULAR 1              0.00417     0          0          1
-C11              FILLED_CIRCULAR 1              0.00417     0          0          1
-C2               FILLED_CIRCULAR 1              0.00417     0          0          1
-C3               FILLED_CIRCULAR 1              0.00417     0          0          1
-C4               FILLED_CIRCULAR 1              0.00417    0          0          1
-C5               FILLED_CIRCULAR 1              0.00417     0          0          1
-C6               FILLED_CIRCULAR 1              0.00417     0          0          1
-C7               FILLED_CIRCULAR 1              0.00417     0          0          1
-C8               FILLED_CIRCULAR 1              0.00417     0          0          1
-C9               FILLED_CIRCULAR 1              0.00417     0          0          1
+C1               FILLED_CIRCULAR 1              0.00334     0          0          1
+C10              FILLED_CIRCULAR 1              0.00334     0          0          1
+C11              FILLED_CIRCULAR 1              0.00334     0          0          1
+C2               FILLED_CIRCULAR 1              0.00334     0          0          1
+C3               FILLED_CIRCULAR 1              0.00334     0          0          1
+C4               FILLED_CIRCULAR 1              0.00334    0          0          1
+C5               FILLED_CIRCULAR 1              0.00334     0          0          1
+C6               FILLED_CIRCULAR 1              0.00334     0          0          1
+C7               FILLED_CIRCULAR 1              0.00334     0          0          1
+C8               FILLED_CIRCULAR 1              0.00334     0          0          1
+C9               FILLED_CIRCULAR 1              0.00334     0          0          1
 
 [TIMESERIES]
 ;;Name           Date       Time       Value     

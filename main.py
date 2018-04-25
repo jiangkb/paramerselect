@@ -93,7 +93,5 @@ if __name__ == "__main__":
         one = getonesample()
         samples.append(one)
     NpSamples = np.array(samples,'float64')
-    np.savetxt('samples.txt', NpSamples)
-    a = np.loadtxt('samples.txt')
-    print(a)
-    print('\n', NpSamples)
+    #np.savetxt('samples/samples.txt', NpSamples)
+
