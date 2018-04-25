@@ -6,7 +6,7 @@ import random
 
 subAreaParaRange = [[0.005, 0.05], [0.005, 0.5], [0.2, 10], [2, 10], [5, 85], [25, 80], [0, 10], [2, 7]]
 manningRange = [0.011, 0.024]
-persentOfMax = 0.1
+persentOfMax = 0.01
 
 
 def subAreaParamer():

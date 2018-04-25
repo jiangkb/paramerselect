@@ -1,9 +1,9 @@
 #!/usr/bin/python3.6
 # -*- coding: utf-8 -*-
 from pyswmm import Simulation
+import numpy as np
 import ParamerFactory as pf
 import ParamerManager as pm
-import numpy as np
 
 SubareaPm = []
 PipPm = []
@@ -53,12 +53,47 @@ def unifyModifyInp():
     pm.saveFile()
 
 
+def getonesample():
+    global groupPm
+    unifyModifyInp()
+    runModel()
+    avgSW, maxSW, maxTSW = pm.getResult3('J11')
+    maxTSW = maxTSW.split(':')
+    # print(maxTSW)
+    maxTNum = int(maxTSW[0]) * 60 + int(maxTSW[1])
+    groupPm.append(avgSW)
+    groupPm.append(maxSW)
+    groupPm.append(maxTNum)
+    return groupPm
+
+
+def appendFile(arr, path='samples.txt'):
+    samples = open(path, 'w')
+    arrStr = ''
+    for n in arr:
+        arrStr = arrStr + str(n) + ','
+    samples.write(arrStr)
+    samples.close()
+
+
 if __name__ == "__main__":
     # modifyInp()
     # runModel()
     # a = computeDelta('J6', 0.07, 0.25)
     # print(a, SubareaPm, PipPm)
-    unifyModifyInp()
-    runModel()
-    a = computeDelta('J6', 0.07, 0.25)
-    print(a, groupPm)
+
+
+    # unifyModifyInp()
+    # runModel()
+    # a = computeDelta('J6', 0.07, 0.25)
+    # print(a, groupPm)
+    samples = []
+    np.set_printoptions(suppress=True)
+    for i in range(10):
+        one = getonesample()
+        samples.append(one)
+    NpSamples = np.array(samples,'float64')
+    np.savetxt('samples.txt', NpSamples)
+    a = np.loadtxt('samples.txt')
+    print(a)
+    print('\n', NpSamples)
