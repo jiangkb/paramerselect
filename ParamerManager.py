@@ -65,7 +65,7 @@ def readResult(filestr, tableName, nextTableName, nodeName, nodeType):
                 max = float(str[3])
                 return avg, max
         current += 1
-    return float(-1),float(-1),float(-1)
+    return float(-1),float(-1),'00:-1'
 
 
 def getTableByName(filestr, tableName, nextTableName):
