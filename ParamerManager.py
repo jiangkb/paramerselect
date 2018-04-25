@@ -65,7 +65,7 @@ def readResult(filestr, tableName, nextTableName, nodeName, nodeType):
                 max = float(str[3])
                 return avg, max
         current += 1
-    return float(-1),float(-1),'00:-1'
+    return float(-1),float(-1)
 
 
 def getTableByName(filestr, tableName, nextTableName):
@@ -316,7 +316,7 @@ def getResult3(nodeName):
                 maxTime = str[6]
                 return avg, max, maxTime
         current += 1
-    return 'no value', 'no value'
+    return float(-1),float(-1),'00:-1'
 
 
 # 0.011-0.024

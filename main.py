@@ -89,7 +89,7 @@ if __name__ == "__main__":
     # print(a, groupPm)
     samples = []
     np.set_printoptions(suppress=True)
-    for i in range(10):
+    for i in range(1000):
         one = getonesample()
         samples.append(one)
     NpSamples = np.array(samples,'float64')
