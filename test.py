@@ -1,9 +1,10 @@
-a=[]
-
-
-a[5]=3
-print(a)
-str ='121212121212'
-#str[2]=1
-str=str.replace('1','3')
-print(str)
+import os
+path='samples/'
+ls = os.listdir(path)
+count = 0
+for i in ls:
+    if os.path.isfile(os.path.join(path,i)):
+        count += 1
+print (count)
+for i in range(count,count+10):
+    print(i)

@@ -4,7 +4,7 @@ from pyswmm import Simulation
 import numpy as np
 import ParamerFactory as pf
 import ParamerManager as pm
-
+import sys as args
 SubareaPm = []
 PipPm = []
 groupPm = []
@@ -38,6 +38,7 @@ def modifyPip(pips=11):
 def runModel(path='example2\\Example.inp'):
     sim = Simulation(path)
     sim.execute()
+    sim.close()
 
 
 def computeDelta(pointName, avg, mas):
@@ -75,23 +76,17 @@ def appendFile(arr, path='samples.txt'):
     samples.write(arrStr)
     samples.close()
 
-
-if __name__ == "__main__":
-    # modifyInp()
-    # runModel()
-    # a = computeDelta('J6', 0.07, 0.25)
-    # print(a, SubareaPm, PipPm)
-
-
-    # unifyModifyInp()
-    # runModel()
-    # a = computeDelta('J6', 0.07, 0.25)
-    # print(a, groupPm)
+def saveTxt(path):
     samples = []
     np.set_printoptions(suppress=True)
-    for i in range(1000):
+    for i in range(200):
         one = getonesample()
         samples.append(one)
-    NpSamples = np.array(samples,'float64')
-    #np.savetxt('samples/samples.txt', NpSamples)
+    NpSamples = np.array(samples, 'float64')
+    np.savetxt(path, NpSamples)
+
+if __name__ == "__main__":
+    #'samples/samples.txt'
+    path=args.argv[1]
+    saveTxt(path)
 
