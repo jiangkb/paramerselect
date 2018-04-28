@@ -1,6 +1,7 @@
 import os
 
 
+# 计算文件个数
 path='samples/'
 ls = os.listdir(path)
 count = 0
