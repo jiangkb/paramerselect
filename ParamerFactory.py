@@ -5,8 +5,7 @@ import ParamerManager as pm
 import random
 
 subAreaParaRange = [[0.005, 0.05], [0.005, 0.5], [0.2, 10], [2, 10], [5, 85], [25, 80], [0, 10], [2, 7]]
-manningRange = [0.011, 0.024]
-persentOfMax = 0.3
+persentOfMax = 0.1
 
 
 def subAreaParamer():
@@ -17,23 +16,17 @@ def subAreaParamer():
     return s
 
 
-def manningParamer():
-    global manningRange
-    return round(random.uniform(manningRange[0], manningRange[1]), 3)
-
-
-def pipParamer(maxN=1):
+def pipParamer(maxN):
     global persentOfMax
+    s = []
     a = random.random() * maxN * persentOfMax
-    return round(a, 5)  # 保留5位小数
-
-
-def getOneGroupParamer():
-    group = subAreaParamer()
-    group.append(manningParamer())
-    group.append(pipParamer())
-    return group
+    s.append(maxN)
+    s.append(round(a, 5))  # 保留5位小数
+    return s
 
 
 if __name__ == "__main__":
-    print(getOneGroupParamer())
+    value=subAreaParamer()
+    pm.changeSubArea8('S1', value)
+    print(value)
+    print(pipParamer(4))
