@@ -8,3 +8,5 @@ for i in ls:
 print (count)
 for i in range(count,count+10):
     print(i)
+
+
