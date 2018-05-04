@@ -3,10 +3,12 @@
 import re
 import numpy as np
 
+#读取inp后的inp文件的类容
 inpfile = ''
+#读取rpt后的rpt文件的类容
 rptfile = ''
 
-
+'''
 def repliceManning(gqName, inletNode, outletNode, Manning):
     global inpfile
     content = ''
@@ -52,7 +54,7 @@ def getSubArea(tableName, nextTableName, areaName, index):
             if (line.find(areaName) >= 0):
                 str = line.split()
                 return str[index]
-
+'''
 
 def readResult(filestr, tableName, nextTableName, nodeName, nodeType):
     start, end = getTableByName(filestr, tableName, nextTableName)
@@ -67,7 +69,9 @@ def readResult(filestr, tableName, nextTableName, nodeName, nodeType):
         current += 1
     return float(-1),float(-1)
 
-
+'''
+根据table名获得，两个table名之间的行号，用于定位要修改的数据
+'''
 def getTableByName(filestr, tableName, nextTableName):
     start, end = 0, 0
     current = 0
@@ -79,7 +83,7 @@ def getTableByName(filestr, tableName, nextTableName):
         current += 1
     return start, end
 
-
+'''
 def changeManning(value):
     repliceManning('gq1', 'j1', 'j2', str(value))
 
@@ -106,7 +110,7 @@ def changeSperv(value):
 
 def changeCZero(value):
     repliceSubArea('SUBAREAS', 'INFILTRATION', 'zmj1', 5, str(value))
-
+'''
 
 def getResult(path='D:\SWMMH\Examples\\test2.rpt'):
     rpt = open(path, 'r')
@@ -149,7 +153,7 @@ def saveFile(path='example2\\Example.inp'):
     newinp.write(inpfile)
     newinp.close()
 
-
+'''
 # 使用全局变量内部声明
 def runInp():
     global inpfile
@@ -175,8 +179,11 @@ def runRpt():
     avg, max = readResult(con, 'Node Depth Summary', 'Node Inflow Summary', 'pfk1', 'OUTFALL')
     rpt.close()
     print(avg, max)
+'''
 
-
+'''
+替换areaName汇水面的前5个参数
+'''
 def repliceSubArea5(areaName, value):
     global inpfile
     content = ''
@@ -194,7 +201,9 @@ def repliceSubArea5(areaName, value):
         current += 1
     inpfile = content
 
-
+'''
+替换areaName汇水面的第6-8个参数
+'''
 def repliceSubArea3(areaName, value):
     global inpfile
     content = ''
@@ -214,18 +223,24 @@ def repliceSubArea3(areaName, value):
         current += 1
     inpfile = content
 
-
+'''
+替换areaName汇水面的8个参数
+'''
 def changeSubArea8(areaName, value):
     repliceSubArea5(areaName, value[:5])
     repliceSubArea3(areaName, value[5:])
 
-
+'''
+替换所有汇水面的8个参数，value[x]对应第X个汇水面的8个参数
+'''
 def repliceAreas(reg, value):
     for i in range(len(value)):
         areaName = reg + str(i + 1)
         changeSubArea8(areaName, value[i])
 
-
+'''
+替换曼宁系数，value[x]对应第x段管的曼宁系数
+'''
 def repliceMannin(pipName, value):
     global inpfile
     content = ''
@@ -244,7 +259,9 @@ def repliceMannin(pipName, value):
         current += 1
     inpfile = content
 
-
+'''
+替换淤积深度，value[x]对应第x段管的淤积深度
+'''
 def repliceGeom(pipName, value):
     global inpfile
     content = ''
@@ -269,7 +286,9 @@ def repliceGeom(pipName, value):
         current += 1
     inpfile = content
 
-
+'''
+获取管道最大高度
+'''
 def getMaxGeom(pipName, lens):
     maxArr = range(lens)
     global inpfile
@@ -284,7 +303,9 @@ def getMaxGeom(pipName, lens):
         current += 1
     return maxArr
 
-
+'''
+替换所有 汇水面，管道参数
+'''
 def repliceAll(areaRex, areaNum, pipRex, pipNum, value):
     # 替换所有area参数
     for i in range(areaNum):
@@ -301,7 +322,9 @@ def repliceAll(areaRex, areaNum, pipRex, pipNum, value):
     repliceMannin(pipRex, manningArr)
     repliceGeom(pipRex, geomArr)
 
-
+'''
+返回nodeName节点的水位均值，最大值，最大值出现的时间
+'''
 def getResult3(nodeName):
     readRptFile()
     global rptfile
@@ -318,15 +341,9 @@ def getResult3(nodeName):
         current += 1
     return float(-1),float(-1),'00:-1'
 
-
-# 0.011-0.024
-# manningRange = np.linspace(0.011, 0.024, 10, True)
-# print(manningRange)
-
-# N-imperv 0.005-0.05
-# N_impervRange=np.linspace(0.005,0.05, 10, True)
-# print(N_impervRange)
+#初始换读入文件
 readInpFile()
+
 if __name__ == "__main__":
     readInpFile()
     value = range(8)
