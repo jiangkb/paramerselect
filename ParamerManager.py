@@ -231,7 +231,7 @@ def changeSubArea8(areaName, value):
     repliceSubArea3(areaName, value[5:])
 
 '''
-替换所有汇水面的8个参数，value[x]对应第X个汇水面的8个参数
+替换所有汇水面的8个参数，value[x][:]对应第X个汇水面的8个参数,value为矩阵
 '''
 def repliceAreas(reg, value):
     for i in range(len(value)):
