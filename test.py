@@ -1,12 +1,19 @@
 import os
-path='samples/'
+import numpy as np
+
+path = 'samples/'
 ls = os.listdir(path)
 count = 0
 for i in ls:
-    if os.path.isfile(os.path.join(path,i)):
+    if os.path.isfile(os.path.join(path, i)):
+        fileName = 'samples' + str(count)
+        if (count == 0):
+            samples = np.loadtxt(path + fileName)
+        else:
+            temp = np.loadtxt(path + fileName)
+            samples = np.concatenate((samples, temp))
         count += 1
-print (count)
-for i in range(count,count+10):
-    print(i)
 
-
+for a in samples:
+    print(a)
+print(len(samples), samples.shape)

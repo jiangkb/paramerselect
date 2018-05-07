@@ -290,7 +290,7 @@ def repliceGeom(pipName, value):
 获取管道最大高度
 '''
 def getMaxGeom(pipName, lens):
-    maxArr = range(lens)
+    maxArr = np.array(range(lens))
     global inpfile
     start, end = getTableByName(inpfile, 'XSECTIONS', 'TIMESERIES')
     current = 0
@@ -299,7 +299,7 @@ def getMaxGeom(pipName, lens):
             strP = line.split()
             if (len(strP) > 0 and strP[0][:1] == pipName):
                 index = int(strP[0][1:])
-                maxArr[index] = float(strP[2])
+                maxArr[index-1] = float(strP[2])
         current += 1
     return maxArr
 
