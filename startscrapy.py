@@ -10,7 +10,7 @@ for i in ls:
         count += 1
 
 #运行一次多了200*5个
-for i in  range(count,count+5):
+for i in  range(count,count+1):
     print('start---------->')
     order='python main.py samples/samples'+str(i)
     print('end------------>',order)
